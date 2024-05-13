@@ -3,6 +3,7 @@ export class CreateCasefileDto {
     offense: string;
     offense_date: string;
     request: string;
+    status: string;
     investigator: string;
     evidence: string;
 }

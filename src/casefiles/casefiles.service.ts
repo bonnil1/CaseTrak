@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Casefile } from '../schemas/casefile.schema';
 import { CreateCasefileDto } from './dto/create-casefile.dto';
+import { UpdateCasefileDto } from './dto/update-casefile.dto';
 
 
 @Injectable()
@@ -13,11 +14,11 @@ export class CasefilesService {
         return this.casefileModel.find().exec();
     }
 
-    async getCasefile(id: string) {
-        const casefile = this.casefileModel.find((casefile) => casefile.id === id);
+    async getCasefile(id: string): Promise<Casefile> {
+        const casefile = this.casefileModel.findById(id);
 
         if(!casefile) {
-            throw new Error('casefile not found');
+            throw new Error('Casefile not found.');
         }
 
         return casefile;
@@ -28,5 +29,21 @@ export class CasefilesService {
         return createdCasefile.save();
     }
 
+    async updateCasefile(id: string, updateCasefileDto: UpdateCasefileDto): Promise<Casefile> {
+        const casefile = await this.casefileModel.findById(id);
+
+        if (!casefile) {
+            throw new Error('No casefile exists.');
+        }
+        casefile.set(updateCasefileDto).save()
+
+        return casefile;
+    }
     
+    async removeCasefile(id: string): Promise<void> {
+        const casefile = await this.getCasefile(id);
+        
+        return await this.casefileModel.findByIdAndDelete(id);
+        //this.casefileModel = this.casefileModel.filter((casefile) => casefile.id !== id);
+    }
 }

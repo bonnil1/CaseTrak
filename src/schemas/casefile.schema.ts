@@ -1,9 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+//import { HydratedDocument } from 'mongoose';
 import * as mongoose from 'mongoose';
 import { User } from './user.schema'
 
-export type CasefileDocument = HydratedDocument<Casefile>;
+//export type CasefileDocument = HydratedDocument<Casefile>;
 
 @Schema()
 class Investigator {
@@ -40,7 +40,7 @@ export class Casefile {
     @Prop({type: mongoose.Schema.Types.ObjectId, ref: 'User'})
     user: User;
 
-    @Prop()
+    @Prop({unique: true})
     case_number: string;
 
     @Prop()
@@ -51,6 +51,9 @@ export class Casefile {
 
     @Prop()
     request: string;
+
+    @Prop()
+    status: string;
 
     @Prop({type: Investigator})
     investigator: Investigator;
