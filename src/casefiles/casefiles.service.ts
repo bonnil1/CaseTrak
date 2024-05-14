@@ -26,6 +26,7 @@ export class CasefilesService {
     
     async createCasefile(createCasefileDto: CreateCasefileDto): Promise<Casefile> {
         const createdCasefile = new this.casefileModel(createCasefileDto);
+       
         return createdCasefile.save();
     }
 

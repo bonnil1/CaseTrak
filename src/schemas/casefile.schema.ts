@@ -6,7 +6,7 @@ import { User } from './user.schema'
 //export type CasefileDocument = HydratedDocument<Casefile>;
 
 @Schema()
-class Investigator {
+export class Investigator {
     @Prop()
     name: string;
 
@@ -21,7 +21,7 @@ class Investigator {
 }
 
 @Schema()
-class Evidence {
+export class Evidence {
     @Prop()
     number: number;
 

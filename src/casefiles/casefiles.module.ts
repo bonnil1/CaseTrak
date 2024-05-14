@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { Casefile, CasefileSchema } from '../schemas/casefile.schema';
 import { CasefilesController } from './casefiles.controller';
 import { CasefilesService } from './casefiles.service';
-import { Casefile, CasefileSchema } from '../schemas/casefile.schema';
 
 @Module({
   imports: [MongooseModule.forFeature([{

@@ -5,6 +5,7 @@ import { CasefilesService } from './casefiles.service';
 
 @Controller('casefiles')
 export class CasefilesController {
+    //injecting casefile provider as a dependency
     constructor(private readonly casefilesService: CasefilesService){}
 
     //GET /casefiles --> []
