@@ -7,8 +7,14 @@ import { User } from 'src/schemas/user.schema';
 export class UsersService {
     constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
-    async findUser(username: string): Promise<User> | undefined {
-        return this.userModel.find({username: username}).exec();
+    async getUser(id: string): Promise<User> {
+        const user = await this.userModel.findById(id).exec();
+
+        if(!user) {
+            throw new Error('No user found.')
+        }
+
+        return user;
     }
 
 }

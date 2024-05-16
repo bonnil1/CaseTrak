@@ -11,11 +11,11 @@ export class User {
     @Prop()
     password: string;
 
-    @Prop()
-    unit: string;
-
     @Prop({unique: true})
     email: string;
+
+    @Prop()
+    unit: string;
 
 }
 
