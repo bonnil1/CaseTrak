@@ -14,14 +14,14 @@ export class AuthService {
         private jwtService: JwtService
     ) {}
 
-    async logIn(_id: string, username: string, password: string): Promise<{ access_token: string }> {
-        const user = await this.usersService.getUser(username);
+    async logIn(username: string, password: string): Promise<{ access_token: string }> {
+        const user = await this.userModel.findOne({username});
     
         if (!user || user.password !== password) {
             throw new UnauthorizedException();
         }
     
-        const payload = { sub: _id, username: user.username }; //mess with the _id and payload more
+        const payload = { username: user.username }; //mess with the _id and payload more
         return {
             access_token: await this.jwtService.signAsync(payload)
         };
