@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ Add Evidence }}</title>
+    </head>
+    <body>
+        <h1>{{ Add Evidence }}</h1>
+        <form action="casefiles/:id/evidence" method="post">
+            <!-- Form fields for evidence -->
+            <label for="number">Item Number:</label>
+            <input type="text" id="number" name="number" placeholder="enter item number">
+
+            <label for="type">Type:</label>
+            <input type="text" id="type" name="type" placeholder="enter type">
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" placeholder="enter description">
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" placeholder="enter location">
+
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

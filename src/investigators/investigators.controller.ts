@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Param, NotFoundException, Body } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, NotFoundException, Body, Render } from '@nestjs/common';
 import { CreateInvestigatorDto } from './dto/create-investigator.dto';
 import { UpdateCasefileDto } from 'src/casefiles/dto/update-casefile.dto';
 import { InvestigatorsService } from './investigators.service';
@@ -10,6 +10,14 @@ export class InvestigatorsController {
     @Get()
     getInvestigators() {
         return this.investigatorsService.getInvestigators();
+    }
+
+    @Get('new')
+    @Render('investigator')
+    NewInvestigator() {
+        return {
+            title: 'Add Investigator',
+        }
     }
 
     @Get(':investigatorId')

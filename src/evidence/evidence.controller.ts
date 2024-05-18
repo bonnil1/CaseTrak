@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Param, NotFoundException, Body } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, NotFoundException, Body, Render } from '@nestjs/common';
 import { CreateEvidenceDto } from './dto/create-evidence.dto';
 import { UpdateEvidenceDto } from './dto/update-evidence.dto';
 import { EvidenceService } from './evidence.service';
@@ -10,6 +10,14 @@ export class EvidenceController {
     @Get()
     getEvidence() {
         return this.evidenceService.getEvidence();
+    }
+
+    @Get('new')
+    @Render('evidence')
+    NewEvidence() {
+        return {
+            title: 'Add Evidence',
+        }
     }
 
     @Get(':evidenceId')

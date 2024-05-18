@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Param, Body, NotFoundException} from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body, NotFoundException, Render} from '@nestjs/common';
 import { CreateCasefileDto } from './dto/create-casefile.dto';
 import { UpdateCasefileDto } from './dto/update-casefile.dto';
 import { CasefilesService } from './casefiles.service';
@@ -21,6 +21,15 @@ export class CasefilesController {
             return this.casefilesService.getCasefile(id);
         } catch (err) {
             throw new NotFoundException();
+        }
+    }
+
+    //GET /casefiles/new
+    @Get('new')
+    @Render('casefile')
+    NewCasefile() {
+        return {
+            title: 'Add Casefile',
         }
     }
 

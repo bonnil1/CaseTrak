@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ Add Casefile }}</title>
+    </head>
+    <body>
+        <h1>{{ Add Casefile }}</h1>
+        <form action="/casefiles" method="post">
+            <!-- Form fields for the new case file -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="enter name">
+
+            <label for="unit">Unit:</label>
+            <input type="text" id="unit" name="unit" placeholder="enter unit">
+
+            <label for="number">Number:</label>
+            <input type="text" id="number" name="number" placeholder="enter number">
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="enter email">
+
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
