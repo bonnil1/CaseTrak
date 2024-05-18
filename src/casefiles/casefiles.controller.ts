@@ -14,6 +14,15 @@ export class CasefilesController {
         return this.casefilesService.getCasefiles();
     }
 
+    //GET /casefiles/new
+    @Get('new')
+    @Render('casefile')
+    NewCasefile() {
+        return {
+            title: 'Add Casefile',
+        }
+    }
+
     //GET /casefiles/:id ==> { ... }
     @Get(':id')
     getOneCasefile(@Param('id') id: string) {
@@ -21,15 +30,6 @@ export class CasefilesController {
             return this.casefilesService.getCasefile(id);
         } catch (err) {
             throw new NotFoundException();
-        }
-    }
-
-    //GET /casefiles/new
-    @Get('new')
-    @Render('casefile')
-    NewCasefile() {
-        return {
-            title: 'Add Casefile',
         }
     }
 
