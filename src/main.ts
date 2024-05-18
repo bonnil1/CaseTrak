@@ -10,6 +10,14 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'views')); //storing templates
   app.setViewEngine('hbs'); //storing HTML output
 
-  await app.listen(3000);
+  app.enableCors(
+    {
+      origin: ['http://localhost:3000'],
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+      credentials: true,
+     }
+  );
+
+  await app.listen(4000);
 }
 bootstrap();

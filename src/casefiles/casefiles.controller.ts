@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Param, Body, NotFoundException, Render} from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body, Query, NotFoundException, Render} from '@nestjs/common';
 import { CreateCasefileDto } from './dto/create-casefile.dto';
 import { UpdateCasefileDto } from './dto/update-casefile.dto';
 import { CasefilesService } from './casefiles.service';
@@ -7,6 +7,12 @@ import { CasefilesService } from './casefiles.service';
 export class CasefilesController {
     //injecting casefile provider as a dependency
     constructor(private readonly casefilesService: CasefilesService){}
+
+    @Get()
+    getByCaseNumber(@Query('case_number') case_number: string) {
+        console.log("Receiving case number in backend!")
+        return this.casefilesService.getByCaseNumber(case_number);
+    }
 
     //GET /casefiles --> []
     @Get()

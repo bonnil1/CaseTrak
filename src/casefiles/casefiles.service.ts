@@ -9,7 +9,11 @@ import { UpdateCasefileDto } from './dto/update-casefile.dto';
 @Injectable()
 export class CasefilesService {
     constructor(@InjectModel(Casefile.name) private casefileModel: Model<Casefile>) {}
-    
+
+    async getByCaseNumber(case_number: string): Promise<Casefile> {
+        return this.casefileModel.findOne({case_number})
+    }
+   
     async getCasefiles(): Promise<Casefile[]> {
         return this.casefileModel.find().exec();
     }
@@ -23,7 +27,7 @@ export class CasefilesService {
 
         return casefile;
     }
-    
+  
     async createCasefile(createCasefileDto: CreateCasefileDto): Promise<Casefile> {
         const createdCasefile = new this.casefileModel(createCasefileDto);
        
