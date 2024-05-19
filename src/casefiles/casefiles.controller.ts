@@ -8,6 +8,7 @@ export class CasefilesController {
     //injecting casefile provider as a dependency
     constructor(private readonly casefilesService: CasefilesService){}
 
+    //GET casefile with Query
     @Get()
     getByCaseNumber(@Query('case_number') case_number: string) {
         console.log("Receiving case number in backend!")
