@@ -55,11 +55,11 @@ export class Casefile {
     @Prop()
     status: string;
 
-    @Prop({type: Investigator})
-    investigator: Investigator;
+    @Prop({type: [Investigator]})
+    investigator: Investigator[];
 
-    @Prop({type: Evidence})
-    evidence: Evidence;
+    @Prop({type: [Evidence]})
+    evidence: Evidence[];
 }
 
 export const CasefileSchema = SchemaFactory.createForClass(Casefile);

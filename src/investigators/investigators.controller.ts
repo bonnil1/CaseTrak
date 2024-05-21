@@ -11,7 +11,7 @@ export class InvestigatorsController {
     getInvestigators() {
         return this.investigatorsService.getInvestigators();
     }
-
+/*
     @Get('new')
     @Render('investigator')
     NewInvestigator() {
@@ -19,7 +19,7 @@ export class InvestigatorsController {
             title: 'Add Investigator',
         }
     }
-
+*/
     @Get(':investigatorId')
     getInvestigator(@Param('investigatorId') investigatorId: string) {
         try {
@@ -30,8 +30,9 @@ export class InvestigatorsController {
     }
 
     @Post()
-    createInvestigator(@Body() createInvestigatorDto: CreateInvestigatorDto) {
-        return this.investigatorsService.createInvestigator(createInvestigatorDto)
+    createInvestigator(@Body() createInvestigatorDto: CreateInvestigatorDto, @Param('id') id: string) {
+        console.log("hitting post investigator route")
+        return this.investigatorsService.createInvestigator(createInvestigatorDto, id)
     }
 }
 

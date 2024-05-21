@@ -11,7 +11,7 @@ export class CasefilesController {
     //GET casefile with Query
     @Get()
     getByCaseNumber(@Query('case_number') case_number: string) {
-        console.log("Receiving case number in backend!")
+        console.log("Receiving case number in backend for query!")
         return this.casefilesService.getByCaseNumber(case_number);
     }
 
@@ -20,7 +20,7 @@ export class CasefilesController {
     getCasefiles() {
         return this.casefilesService.getCasefiles();
     }
-
+/*
     //GET /casefiles/new
     @Get('new')
     @Render('casefile')
@@ -29,7 +29,7 @@ export class CasefilesController {
             title: 'Add Casefile',
         }
     }
-
+*/
     //GET /casefiles/:id ==> { ... }
     @Get(':id')
     getOneCasefile(@Param('id') id: string) {

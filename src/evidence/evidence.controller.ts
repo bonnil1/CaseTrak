@@ -11,7 +11,7 @@ export class EvidenceController {
     getEvidence() {
         return this.evidenceService.getEvidence();
     }
-
+/*
     @Get('new')
     @Render('evidence')
     NewEvidence() {
@@ -19,7 +19,7 @@ export class EvidenceController {
             title: 'Add Evidence',
         }
     }
-
+*/
     @Get(':evidenceId')
     getOneEvidence(@Param('evidenceId') evidenceId: string) {
         try {
@@ -30,8 +30,9 @@ export class EvidenceController {
     }
 
     @Post()
-    createEvidence(@Body() createEvidenceDto: CreateEvidenceDto) {
-        return this.evidenceService.createEvidence(createEvidenceDto)
+    createEvidence(@Body() createEvidenceDto: CreateEvidenceDto, @Param('id') id: string ) {
+        console.log("hitting post evidence route")
+        return this.evidenceService.createEvidence(createEvidenceDto, id)
     }
 }
 
