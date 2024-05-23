@@ -16,7 +16,7 @@ export class CasefilesController {
     }
 
     //GET /casefiles --> []
-    @Get()
+    @Get('all')
     getCasefiles() {
         return this.casefilesService.getCasefiles();
     }
