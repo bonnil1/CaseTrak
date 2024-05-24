@@ -12,7 +12,7 @@ async function bootstrap() {
 
   app.enableCors(
     {
-      origin: [process.env.CLIENT],
+      origin: process.env.CLIENT,
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
       credentials: true,
      }
