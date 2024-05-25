@@ -4,7 +4,9 @@ import { JwtService } from '@nestjs/jwt';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from 'src/schemas/user.schema';
-import { CreateUserDto } from './dto/signup.dto';
+import * as bcrypt from 'bcrypt'
+import { LogInDto } from './dto/login.dto';
+
 
 @Injectable()
 export class AuthService {
@@ -14,23 +16,26 @@ export class AuthService {
         private jwtService: JwtService
     ) {}
 
-    async logIn(username: string, password: string): Promise<{ access_token: string }> {
+    async logIn(logInDto: LogInDto): Promise<{ access_token: string }> {
+        const { username, password } = logInDto
         const user = await this.userModel.findOne({username});
+
+        if(!user) {
+            throw new UnauthorizedException('Invalid email or password.');
+        }
     
-        if (!user || user.password !== password) {
-            throw new UnauthorizedException();
+        const verifyPassword = await bcrypt.compare(password, user.password);
+        console.log(password)
+        console.log(user.password)
+
+        if (!verifyPassword) {
+            throw new UnauthorizedException('Invalid password');
         }
     
         const payload = { username: user.username }; //mess with the _id and payload more
         return {
             access_token: await this.jwtService.signAsync(payload)
         };
-    }
-
-    async createUser(createUserDto: CreateUserDto): Promise<User> {
-        const createdUser = new this.userModel(createUserDto);
-
-        return createdUser.save();
     }
 
 }
