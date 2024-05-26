@@ -33,7 +33,9 @@ export class UsersService {
 
         const newUser = new this.userModel({
             username: createUserDto.username,
-            password: hashed
+            password: hashed,
+            email: createUserDto.email,
+            unit: createUserDto.unit
         })
 
         return newUser.save();

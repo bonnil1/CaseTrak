@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Put, Delete, Param, Body, Query, NotFoundException, Render} from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body, Query, NotFoundException, UseGuards} from '@nestjs/common';
 import { CreateCasefileDto } from './dto/create-casefile.dto';
 import { UpdateCasefileDto } from './dto/update-casefile.dto';
 import { CasefilesService } from './casefiles.service';
+import { AuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('casefiles')
 export class CasefilesController {

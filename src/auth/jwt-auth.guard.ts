@@ -24,7 +24,7 @@ export class AuthGuard implements CanActivate {
         // so that we can access it in our route handlers
         request['user'] = payload;
       } catch {
-        throw new UnauthorizedException();
+        throw new UnauthorizedException('Please log in to view this page.');
       }
       return true;
     }
@@ -34,15 +34,3 @@ export class AuthGuard implements CanActivate {
       return type === 'Bearer' ? token : undefined;
     }
   }
-
-
-
-/*
-import { Injectable } from "@nestjs/common";
-import { AuthGuard } from "@nestjs/passport";
-
-@Injectable()
-export class JwtAuthGuard extends AuthGuard('jwt') {
-
-}
-*/

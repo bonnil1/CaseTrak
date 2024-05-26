@@ -29,13 +29,13 @@ export class AuthService {
         //console.log(user.password)
 
         if (!verifyPassword) {
-            throw new UnauthorizedException('Invalid password');
+            throw new UnauthorizedException('Invalid email or password');
         }
     
-        const payload = { username: user.username }; //mess with the _id and payload more
+        const payload = { username: user.username };
 
         const access_token = await this.jwtService.signAsync(payload)
-        //console.log(access_token)
+        console.log(access_token)
 
         return { 
             access_token,

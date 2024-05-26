@@ -1,9 +1,10 @@
 import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Casefile } from '../schemas/casefile.schema';
 import { CreateCasefileDto } from './dto/create-casefile.dto';
 import { UpdateCasefileDto } from './dto/update-casefile.dto';
+import { MongoServerError } from 'mongodb';
 
 
 @Injectable()
@@ -29,9 +30,14 @@ export class CasefilesService {
     }
   
     async createCasefile(createCasefileDto: CreateCasefileDto): Promise<Casefile> {
-        const createdCasefile = new this.casefileModel(createCasefileDto);
-       
-        return createdCasefile.save();
+        try {
+            const createdCasefile = new this.casefileModel(createCasefileDto);
+            return createdCasefile.save();
+        } catch(error) {
+            if (error instanceof MongoServerError && error.code === 11000) {
+                throw new HttpException("A casefile with this case number already exists.", HttpStatus.CONFLICT)
+            }
+        }
     }
 
     async updateCasefile(id: string, updateCasefileDto: UpdateCasefileDto): Promise<Casefile> {
