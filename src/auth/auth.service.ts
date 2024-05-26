@@ -25,17 +25,22 @@ export class AuthService {
         }
     
         const verifyPassword = await bcrypt.compare(password, user.password);
-        console.log(password)
-        console.log(user.password)
+        //console.log(password)
+        //console.log(user.password)
 
         if (!verifyPassword) {
             throw new UnauthorizedException('Invalid password');
         }
     
         const payload = { username: user.username }; //mess with the _id and payload more
-        return {
-            access_token: await this.jwtService.signAsync(payload)
-        };
+
+        const access_token = await this.jwtService.signAsync(payload)
+        //console.log(access_token)
+
+        return { 
+            access_token,
+            username: user.username
+         };
     }
 
 }
