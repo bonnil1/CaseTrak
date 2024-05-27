@@ -34,5 +34,6 @@ export class InvestigatorsController {
         console.log("hitting post investigator route")
         return this.investigatorsService.createInvestigator(createInvestigatorDto, id)
     }
+
 }
 
