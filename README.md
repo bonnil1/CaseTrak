@@ -7,27 +7,29 @@ A laboratory information management system that fulfills all your case file trac
 |--------|---------------------------------------------|----------------------------------------------------------------|
 | GET    | /casefiles/all                              | Retrieve all casefiles.                                        |
 | GET    | /casefiles/:id                              | Retrieve casefile with specific id with evidence and investigators. |
-| POST   | /casefile                                   | Create a new casefile.                                         |
-| PUT    | /casefile/:id                               | Update the casefile with the specific id.                      |
-| DELETE | /casefile/:id                               | Delete the casefile with the specific id.                      |
-| GET    | /casefile/:id/evidence                      | Retrieve all evidence.                                         |
-| GET    | /casefile/:id/evidence/:evidenceId          | Retrieve evidence with specific evidenceId.                    |
-| POST   | /casefile/:id/evidence                      | Create a new evidence for the casefile with the specific id.   |
-| GET    | /casefile/:id/investigators                 | Retrieve all investigators.                                    |
-| GET    | /casefile/:id/investigators/:investigatorId | Retrieve investigator with specific investigatorId.            |
-| POST   | /casefile/:id/investigators                 | Create a new investigator for the casefile with the investigator id.|
+| POST   | /casefiles                                   | Create a new casefile.                                         |
+| PUT    | /casefiles/:id                               | Update the casefile with the specific id.                      |
+| DELETE | /casefiles/:id                               | Delete the casefile with the specific id.                      |
+| GET    | /casefiles/:id/evidence                      | Retrieve all evidence.                                         |
+| GET    | /casefiles/:id/evidence/:evidenceId          | Retrieve evidence with specific evidenceId.                    |
+| POST   | /casefiles/:id/evidence                      | Create a new evidence for the casefile with the specific id.   |
+| GET    | /casefiles/:id/investigators                 | Retrieve all investigators.                                    |
+| GET    | /casefiles/:id/investigators/:investigatorId | Retrieve investigator with specific investigatorId.            |
+| POST   | /casefiles/:id/investigators                 | Create a new investigator for the casefile with the investigator id.|
 
 <br/>
 
 ## Technologies Used:
-- HTML <br/>
+- NESTJS <br/>
 - JavaScript <br/>
+- TypeScript <br/>
 - MongoDB <br/>
 - Mongoose <br/>
-- Nest.js <br/>
 - CORS <br/>
 - JWT/Bcyprt<br/>
-- Resources:
+- dotenv <br/>
+
+## Resources:
 - Lecture Notes <br/>
 - Youtube Videos <br/>
 - Stack Overflow <br/>
