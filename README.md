@@ -36,7 +36,7 @@ A laboratory information management system that fulfills all your case file trac
 - ChatGpt <br/>
 
 ## Click to view CaseTrak:
-- [Live View](https://casetrak-backend-c956cbec51a7.herokuapp.com 'Live View') 
+- [Live View](https://casetrak-53d2d75f5275.herokuapp.com/ 'Live View') 
 - [Frontend Repo](https://github.com/bonnil1/CaseTrak---frontend 'CaseTrak Frontend')
 - [Backend Repo](https://github.com/bonnil1/CaseTrak 'CaseTrak Backend')
 
